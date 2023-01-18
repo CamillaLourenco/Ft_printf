@@ -72,6 +72,16 @@ int	ft_convert_hex(unsigned long long number, char id)
 		str[--lenght] = '0';
 
 	// Enquanto o número for diferente de 0, calcula o resto da divisão por 16 e adiciona o caractere correspondente na string
+	while (number != 0)
+	{
+		mod = (number % 16);
+		str[--lenght] = conversion_ascii(mod, id);
+		number = number / 16;
+	}
+	lenght = ft_putstr(str);
+	free(str);
+	return (lenght);
+}
 
 int	handle_argument_format(const char *str, int count, va_list arg)
 {
