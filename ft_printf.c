@@ -16,25 +16,34 @@ static int	ft_hexlen(unsigned long int n)
 {
 	int	lenght;
 
+	// Inicializa a variável "lenght" como 1
 	lenght = 1;
+
+	// Enquanto o número for maior ou igual a 16, incrementa o comprimento e divide o número por 16
 	while (n >= 16)
 	{
 		lenght++;
 		n = n / 16;
 	}
+	// Retorna o comprimento calculado
 	return (lenght);
 }
 
 static char	conversion_ascii(unsigned long int receptor, char id)
 {
+	// Se o receptor for menor ou igual a 9, retorna o caractere correspondente ao receptor + 48 (caracteres numéricos)
 	if (receptor <= 9)
 		return (receptor + 48);
+	// Se o id for 'l' retorna o caractere correspondente ao receptor + 87 (caracteres minúsculos)
 	else if (id == 'l')
 		return (receptor + 87);
+	// Se o id for 'U' retorna o caractere correspondente ao receptor + 55 (caracteres maiúsculos)
 	else if (id == 'U')
 		return (receptor + 55);
+	// Se o id for 'p' retorna o caractere correspondente ao receptor + 87 (caracteres minúsculos)
 	else if (id == 'p')
 		return (receptor + 87);
+	// Caso contrário, retorna o receptor sem modificação
 	return (receptor);
 }
 
@@ -44,26 +53,25 @@ int	ft_convert_hex(unsigned long long number, char id)
 	int					lenght;
 	unsigned long int	mod;
 
+	// Calcula o comprimento da representação hexadecimal do número
 	lenght = ft_hexlen (number);
+
+	// Se o id for 'p' e o número for 0, retorna "(nil)"
 	if (id == 'p')
 	{
 		if (number == 0)
 			return (ft_printf("(nil)") - 2);
 		ft_printf("0x");
 	}
+
+	// Aloca memória para a string de representação hexadecimal
 	str = (char *) calloc(sizeof(char), (lenght + 1));
+
+	// Se o número for 0, coloca o caractere '0' na string
 	if (number == 0)
 		str[--lenght] = '0';
-	while (number != 0)
-	{
-		mod = (number % 16);
-		str[--lenght] = conversion_ascii(mod, id);
-		number = number / 16;
-	}
-	lenght = ft_putstr(str);
-	free(str);
-	return (lenght);
-}
+
+	// Enquanto o número for diferente de 0, calcula o resto da divisão por 16 e adiciona o caractere correspondente na string
 
 int	handle_argument_format(const char *str, int count, va_list arg)
 {
