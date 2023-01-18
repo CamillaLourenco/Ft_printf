@@ -1,12 +1,12 @@
-# ft_printf
- recode printf 
- ![ft_printfe](https://user-images.githubusercontent.com/18141491/213243920-6296a52f-b22f-4dbf-a00d-788e9d78dc23.png)
-
-
-
-
+   ![ft_printfe](https://user-images.githubusercontent.com/18141491/213243920-6296a52f-b22f-4dbf-a00d-788e9d78dc23.png)  
+  # ft_printf           
+``recode printf``
+<div>
+ 
+ 
 Those are the format identifier's I nedd to recode:
-
+<div>
+ 
 %  | type |
 ---|------|
 %c | character				|
